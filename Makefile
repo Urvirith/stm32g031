@@ -12,6 +12,13 @@ ASFLAGS		:= -mcpu=cortex-m0plus -mthumb
 LDFLAGS 	:= -T 
 OBJFLAGS	:= -O binary
 
+START_DIR	:= ./src/startup
+LINK_DIR 	:= ./src/linker
+BIN_DIR 	:= ./bin
+
+START_FILE	:= startup_ARMCM0plus.s
+LINK_FILE	:= gcc_arm.ld
+
 #	EXAMPLE OF AUTOMATIC VARIABLES
 #	%.o: %.c %.h common.h
 #		$(CC) $(CFLAGS) -c $<
@@ -29,10 +36,6 @@ OBJFLAGS	:= -O binary
 #	%.o: 	%.c %.h common.h
 #		$(CC) $(CFLAGS) -c $^
 
-START_DIR	:= ./src/startup
-LINK_DIR 	:= ./src/linker
-BIN_DIR 	:= ./bin
-
 release: $(BIN_DIR)/main.bin
 
 # Copy to a bin file
@@ -40,11 +43,11 @@ $(BIN_DIR)/main.bin: $(BIN_DIR)/main.elf
 	$(OBJ) $(OBJFLAGS) $^ $@
 
 # Build An ELF 
-$(BIN_DIR)/main.elf: $(LINK_DIR)/gcc_arm.ld $(BIN_DIR)/main.o $(BIN_DIR)/startup.o
+$(BIN_DIR)/main.elf: $(LINK_DIR)/$(LINK_FILE) $(BIN_DIR)/main.o $(BIN_DIR)/startup.o
 	$(LD) -Os -s $(LDFLAGS) $^ -o $@
 
 # Build Dependances
-$(BIN_DIR)/startup.o: $(START_DIR)/startup_ARMCM4.s
+$(BIN_DIR)/startup.o: $(START_DIR)/$(START_FILE)
 	$(AS) $< $(ASFLAGS) -o $@
 
 # Build The Rust Project, .cargo and Cargo.Toml hold the flags for this
