@@ -61,17 +61,24 @@ pub const USER_LED:                 u32 = 6;
 pub const USER_LED_BIT:             u32 = common::BIT_6;
 
 /* LED OUTPUTS */
-pub const PORTA_PIN0:               u32 = 0;
-pub const LED1:                     u32 = PORTA_PIN0;
-pub const LED1_BIT:                 u32 = common::BIT_0;
+pub const PORTB_PIN4:               u32 = 4;                    // D12
+pub const LED1:                     u32 = PORTB_PIN4;           // D12
+pub const LED1_BIT:                 u32 = common::BIT_4;        // D12
 
-pub const PORTA_PIN1:               u32 = 1;
-pub const LED2:                     u32 = PORTA_PIN1;
-pub const LED2_BIT:                 u32 = common::BIT_1;
+/* LED OUTPUTS */
+pub const PORTB_PIN5:               u32 = 5;                    // D11
+pub const LED2:                     u32 = PORTB_PIN5;           // D11
+pub const LED2_BIT:                 u32 = common::BIT_5;        // D11
 
-pub const PORTA_PIN4:               u32 = 4;
-pub const LED3:                     u32 = PORTA_PIN4;
-pub const LED3_BIT:                 u32 = common::BIT_3;
+/* LED OUTPUTS */
+pub const PORTB_PIN9:               u32 = 9;                    // D10
+pub const LED3:                     u32 = PORTB_PIN9;           // D10
+pub const LED3_BIT:                 u32 = common::BIT_9;        // D10
+
+/* LED OUTPUTS */
+pub const PORTA_PIN8:               u32 = 8;                    // D09
+pub const LED4:                     u32 = PORTA_PIN8;           // D09
+pub const LED4_BIT:                 u32 = common::BIT_8;        // D09
 
 /* GPIO SETUP */
 pub const LED_MODE:                 gpio::Mode = gpio::Mode::Out;
